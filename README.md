@@ -1,8 +1,7 @@
 ## O-Complex test task
 
 ### Стек
-React 18, TypeScript, Vite, Axios, DOMPurify, react-imask.
-Состояние — кастомные хуки (без Redux).
+React 18, TypeScript, Vite, Axios, Redux, react-imask.
 
 ### Как запустить
 ```bash
