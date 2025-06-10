@@ -32,36 +32,51 @@ export default function CartBar() {
 				setOk(true);
 				dispatch(clear());
 			} else {
-				setErr(true); // сервер вернул ошибку
+				setErr(true);
 			}
 		} catch {
-			setErr(true); // сеть или 500
+			setErr(true);
 		}
 	};
 
 	return (
 		<>
 			<div className="cart-bar">
-				<h4>Добавленные товары — {totalSum}₽</h4>
+				<div className="title">Добавленные товары — {totalSum}₽</div>
 
-				{items.map(i => (
-					<div key={i.id} className="row">
-						<span>{i.title}</span>
-						<span>x{i.quantity}</span>
-						<span>{i.price * i.quantity}₽</span>
-					</div>
-				))}
+				<div>
+					{items.map(i => (
+						<>
+							<div key={i.id} className="row">
+								<span className={"name"}>{i.title}</span>
+								<span className={"count"}>x{i.quantity}</span>
+								<span>{i.price * i.quantity}₽</span>
+							</div>
 
-				<IMaskInput
-					mask="+{7} (000) 000-00-00"
-					value={phone}
-					onAccept={(v: string) => dispatch(setPhone(v))}
-					className={err ? 'invalid' : ''}
-				/>
+							<div className="divider"/>
+						</>
+					))}
+				</div>
 
-				<button disabled={!totalQty || isLoading} onClick={order}>
-					{isLoading ? 'отправка...' : 'заказать'}
-				</button>
+
+				<div className={"contact"}>
+					<IMaskInput
+						mask="+{7} (000) 000-00-00"
+						lazy={false}
+						value={phone}
+						onAccept={(v: string) => dispatch(setPhone(v))}
+						className="phone-input"
+						style={err ? {border: "1px solid red"} : {}}
+					/>
+
+					<button
+						disabled={!totalQty || isLoading}
+						onClick={order}
+						className="order-button"
+					>
+						{isLoading ? 'отправка...' : 'заказать'}
+					</button>
+				</div>
 			</div>
 
 			{ok && <Popup onClose={() => setOk(false)} />}

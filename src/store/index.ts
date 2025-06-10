@@ -1,14 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cartReducer, { CartState } from './cartSlice'; // ⬅️ обязательно экспортировать тип CartState
+import cartReducer, { CartState } from './cartSlice';
 import { apiSlice } from './apiSlice';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import type { PersistPartial } from 'redux-persist/es/persistReducer'; // ✅ нужно для типов
-
 const persistConfig = { key: 'o-complex-cart', storage };
 
-// ✅ ЯВНО указываем тип persistReducer:
 const persistedCartReducer = persistReducer<CartState>(
 	persistConfig,
 	cartReducer

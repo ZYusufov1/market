@@ -8,8 +8,11 @@ export default function Reviews() {
 		<section className="reviews">
 			{isLoading && <p>Загрузка отзывов...</p>}
 			{data?.map(r => (
-				<article key={r.id} className="review-card"
-				         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(r.text) }} />
+				<article
+					key={r.id}
+					className="review-card"
+					dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(r.text) }}
+				/>
 			))}
 		</section>
 	);

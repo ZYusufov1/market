@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useGetProductsQuery } from '../store/apiSlice';
-import ProductCard from './ProductCard';
+import { ProductCard } from './ProductCard';
 import type { Product } from '../types';
 
 export default function ProductGrid() {
@@ -13,7 +13,6 @@ export default function ProductGrid() {
 		page_size: 20,
 	});
 
-	// добавляем товары только если не дублируются
 	useEffect(() => {
 		if (isSuccess && data.items) {
 			setAllProducts(prev => {

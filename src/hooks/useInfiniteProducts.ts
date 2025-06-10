@@ -15,7 +15,7 @@ export function useInfiniteProducts() {
 		setPage(p => p + 1);
 	}, [page]);
 
-	useEffect(() => { load(); }, []);            // 1-я страница сразу
+	useEffect(() => { load(); }, []);
 
 	useEffect(() => {
 		if (!loader.current) return;

@@ -21,7 +21,7 @@ const slice = createSlice({
 		update(state, { payload }: PayloadAction<{ id: number; qty: number }>) {
 			state.items = state.items
 				.map(i => i.id === payload.id ? { ...i, quantity: Math.max(payload.qty, 0) } : i)
-				.filter(i => i.quantity);           // 0 → удалить
+				.filter(i => i.quantity);
 		},
 		clear(state) {
 			state.items = [];
