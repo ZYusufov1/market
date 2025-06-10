@@ -1,7 +1,7 @@
 ## O-Complex test task
 
 ### Стек
-React 18, TypeScript, Vite, Axios, DOMPurify, react-input-mask.
+React 18, TypeScript, Vite, Axios, DOMPurify, react-imask.
 Состояние — кастомные хуки (без Redux).
 
 ### Как запустить
